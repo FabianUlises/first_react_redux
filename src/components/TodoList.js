@@ -1,12 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addTodo, removeOne, clearTodo } from './../features/todoSlice';
 
 const TodoList = () => {
     // State
     const [ input, setInput] = useState('');
+    // Redux
+    // const items = useSelector((state) => state.todos.items);
+    const dispatch = useDispatch();
+    // Handle form submit
+    const submitForm = (e) => {
+        e.preventDefault();
+        dispatch(addTodo(input));
+        // console.log(items);
+    };
   return (
     <div>
         <h2>Todo List</h2>
-        <form>
+        <form onSubmit={(e) => submitForm(e)}>
             <input type='text' placeholder='enter todo item'
                 onChange={(e) => 
                     setInput(e.target.value)
@@ -17,7 +28,7 @@ const TodoList = () => {
         <ul id='todo-list'>
 
         </ul>
-        <button type='button'>Clear</button>
+        <button type='button' onClick={() => dispatch(clearTodo())}>Clear</button>
     </div>
   )
 }
