@@ -6,14 +6,15 @@ const TodoList = () => {
     // State
     const [ input, setInput] = useState('');
     // Redux
-    // const items = useSelector((state) => state.todos.items);
+    const items = useSelector((state) => state.todos.items);
     const dispatch = useDispatch();
     // Handle form submit
     const submitForm = (e) => {
         e.preventDefault();
         dispatch(addTodo(input));
-        // console.log(items);
     };
+    // Render items to dom
+    const renderItems = items.map((item, i) => <li key={i} onClick={() => dispatch(removeOne(i))}>{item}</li>)
   return (
     <div>
         <h2>Todo List</h2>
@@ -26,7 +27,7 @@ const TodoList = () => {
             <button type='submit'>Submit</button>
         </form>
         <ul id='todo-list'>
-
+                {renderItems}
         </ul>
         <button type='button' onClick={() => dispatch(clearTodo())}>Clear</button>
     </div>
