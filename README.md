@@ -1,4 +1,4 @@
-# LBSD RR 09 Intro to React-Redux
+# LBSD RR 09 Intro to React-Redux / Explore Redux DevTools
 ## Available Scripts
 
 In the project directory, you can run:
