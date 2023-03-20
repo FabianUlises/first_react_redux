@@ -1,9 +1,10 @@
+// Components
+import Counter from './components/Counter';
 import './App.css';
-
 function App() {
   return (
     <div className="App">
-        Learn React
+        <Counter />
     </div>
   );
 }
